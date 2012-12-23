@@ -1,5 +1,4 @@
 #!env ruby
-
 require 'date'
 
 Property = Struct.new(:property_id,:lat,:lng,:price)
