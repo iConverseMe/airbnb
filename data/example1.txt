@@ -1,4 +1,9 @@
-Intelligentsia dreamcatcher fixie, irure consequat cillum fugiat labore.
-Selvage qui +1 ad. Beard elit cray, master cleanse fixie YOLO aesthetic mixtape shoreditch authentic small batch do consectetur keytar chillwave.
-Minim lo-fi accusamus sapiente, master cleanse duis anim flannel shoreditch Austin ullamco pariatur gentrify keytar. Neutra thundercats lo-fi, retro scenester marfa post-ironic butcher DIY nihil.
-Street art assumenda sapiente sint magna id meh, art party butcher ullamco voluptate squid polaroid single-origin coffee DIY. Actually gentrify next level, ad hashtag vice jean shorts pug gluten-free cillum reprehenderit.
+Properties
+1,0.29322858181353,-69.8325156543615,500
+2,15.8229075627722,102.378248903003,280
+Dates
+1,2012-08-15,0,500
+1,2012-08-26,1,700
+Searches
+1,0.9802496106877,-70.146252228624,2012-08-14,2012-08-21
+2,0.9802496106877,-70.146252228624,2012-08-26,2012-08-28
