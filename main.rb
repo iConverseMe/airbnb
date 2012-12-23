@@ -62,8 +62,7 @@ Price = Struct.new(:search_id,:rank,:property_id,:total_price)
 section = nil
 sections = /Properties|Dates|Searches/
 
-# arrays to hold all our data. big waste of memory right now.
-# they should also not be global
+# TODO: remove from global scope
 $dates = []
 $properties = []
 $searches = []
