@@ -58,7 +58,7 @@ end
 # Calculate the cost of a stay
 def get_cost(property, checkin, checkout)
   # get date information if that property is available
-  if dateinfo = available_dateinfo(property, checkin, checkout)
+  if (dateinfo = available_dateinfo(property, checkin, checkout))
     # calculate the normal cost
     total_price = property.price * (checkout-checkin)
 
@@ -82,7 +82,7 @@ $searches.each do |search|
   # for each property in the area
   local_properties(search.lat,search.lng).each do |property|
     # record the cost of a stay, if available
-    if price = get_cost(property, search.checkin, search.checkout)
+    if (price = get_cost(property, search.checkin, search.checkout))
       prices << Price.new(search.search_id, 0, property.property_id, price)
     end
   end
