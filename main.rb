@@ -26,7 +26,7 @@ $stdin.each_line do |line|
       special_price = (line[3] == nil or line[3] == "\n") ? nil : line[3].to_i
       $dates << Availability.new(line[0].to_i,Date.parse(line[1]),line[2].to_i,special_price)
     when "Searches"
-      $searches << Search.new(line[0].to_i,line[1].to_f,line[2].to_f,Date.parse(line[3]),Date.parse(line[4])
+      $searches << Search.new(line[0].to_i,line[1].to_f,line[2].to_f,Date.parse(line[3]),Date.parse(line[4]))
     end
   end
 end
