@@ -53,9 +53,6 @@ def available_dateinfo(property, checkin, checkout)
   dateinfo.each do |date|
     if date.available == 0 then return nil end
   end
-
-  # We found some info
-  return dateinfo
 end
 
 # Calculate the cost of a stay
