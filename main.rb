@@ -59,17 +59,15 @@ DateAvailability = Struct.new(:property_id,:date,:available,:price)
 Search = Struct.new(:search_id,:lat,:lng,:checkin,:checkout)
 Price = Struct.new(:search_id,:rank,:property_id,:total_price)
 
-section = nil
-sections = /Properties|Dates|Searches/
-
 # TODO: remove from global scope
 $dates = []
 $properties = []
 $searches = []
 
+section = nil
 $stdin.each_line do |line|
   # Check if we are in a new section
-  if sections.match(line)
+  if sections.match(/Properties|Dates|Searches/)
     section = line.chomp()
   else
     line = line.split(',')
