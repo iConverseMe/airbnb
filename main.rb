@@ -41,7 +41,7 @@ end
 
 # Returns date information in a checkin range for a property, if 
 # and only if that property is available
-def available_dateinfo(property,checkin,checkout)
+def available_dateinfo(property, checkin, checkout)
   # First get all the information about a property in a date range
   dateinfo = $dates.select {|date|
     date.property_id == property.property_id and
