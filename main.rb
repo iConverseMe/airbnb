@@ -144,11 +144,9 @@ $searches.each do |search|
     dateinfo = available_dateinfo(property, search.checkin, search.checkout)
     # if we can book
     if dateinfo != nil
-      total_price = 0
       # calculate the normal cost
-      for day in search.checkin...search.checkout
-        total_price += property.price
-      end
+      total_price = property.price * (search.checkout-search.checkin)
+
       # factor in for special costs
       dateinfo.each do |date|
         if date.price
