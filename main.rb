@@ -33,8 +33,7 @@ end
 # Filter local properties
 def local_properties(lat,lng)
   return $properties.select { |property| 
-    property.lat.between?(lat-1, lat+1) and
-    property.lng.between?(lng-1, lng+1)
+    property.lat.between?(lat-1, lat+1) && property.lng.between?(lng-1, lng+1)
   }
 end
 
@@ -43,7 +42,7 @@ end
 def available_dateinfo(property, checkin, checkout)
   # First get all the information about a property in a date range
   dateinfo = $dates.select {|date|
-    date.property_id == property.property_id and
+    date.property_id == property.property_id &&
     date.date === checkin.upto(checkout-1) {}
   }
   
