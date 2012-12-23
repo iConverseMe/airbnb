@@ -73,12 +73,12 @@ $stdin.each_line do |line|
     line = line.split(',')
     case section
     when "Properties"
-      $properties << Property.new(line[0].to_i,line[1].to_f,line[2].to_f,line[3].chomp().to_i)
+      $properties << Property.new(line[0].to_i,line[1].to_f,line[2].to_f,line[3].to_i)
     when "Dates"
-      special_price = (line[3] == nil or line[3] == "\n") ? nil : line[3].chomp()
-      $dates << DateAvailability.new(line[0].to_i,Date.parse(line[1]),line[2].chomp(),special_price.to_i)
+      special_price = (line[3] == nil or line[3] == "\n") ? nil : line[3].to_i
+      $dates << DateAvailability.new(line[0].to_i,Date.parse(line[1]),line[2].to_i,special_price)
     when "Searches"
-      $searches << Search.new(line[0].to_i,line[1].to_f,line[2].to_f,Date.parse(line[3]),Date.parse(line[4].chomp()))
+      $searches << Search.new(line[0].to_i,line[1].to_f,line[2].to_f,Date.parse(line[3]),Date.parse(line[4])
     end
   end
 end
