@@ -67,34 +67,20 @@ $dates = []
 $properties = []
 $searches = []
 
-def ParseDate(dateString)
-  s = dateString.split(',')
-  special_price = (s[3] == nil or s[3] == "\n") ? nil : s[3].chomp()
-  $dates << DateAvailability.new(s[0].to_i,Date.parse(s[1]),s[2].chomp(),special_price.to_i)
-end
-
-def ParseProperty(propertyString)
-  s = propertyString.split(',')
-  $properties << Property.new(s[0].to_i,s[1].to_f,s[2].to_f,s[3].chomp().to_i)
-end
-
-def ParseSearch(searchString)
-  s = searchString.split(',')
-  $searches << Search.new(s[0].to_i,s[1].to_f,s[2].to_f,Date.parse(s[3]),Date.parse(s[4].chomp()))
-end
-
-$stdin.each_line do |l|
+$stdin.each_line do |line|
   # Check if we are in a new section
-  if sections.match(l)
-    section = l.chomp()
+  if sections.match(line)
+    section = line.chomp()
   else
+    line = line.split(',')
     case section
     when "Properties"
-      ParseProperty(l)
+      $properties << Property.new(line[0].to_i,line[1].to_f,line[2].to_f,line[3].chomp().to_i)
     when "Dates"
-      ParseDate(l)
+      special_price = (line[3] == nil or line[3] == "\n") ? nil : line[3].chomp()
+      $dates << DateAvailability.new(line[0].to_i,Date.parse(line[1]),line[2].chomp(),special_price.to_i)
     when "Searches"
-      ParseSearch(l)
+      $searches << Search.new(line[0].to_i,line[1].to_f,line[2].to_f,Date.parse(line[3]),Date.parse(line[4].chomp()))
     end
   end
 end
