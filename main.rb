@@ -75,20 +75,17 @@ $properties = []
 $searches = []
 
 def ParseDate(dateString)
-  #puts "parsing #{dateString}"
   s = dateString.split(',')
   special_price = (s[3] == nil or s[3] == "\n") ? nil : s[3].chomp()
   $dates << DateAvailability.new(s[0].to_i,Date.parse(s[1]),s[2].chomp(),special_price.to_i)
 end
 
 def ParseProperty(propertyString)
-  #puts "defining #{propertyString}"
   s = propertyString.split(',')
   $properties << Property.new(s[0].to_i,s[1].to_f,s[2].to_f,s[3].chomp().to_i)
 end
 
 def ParseSearch(searchString)
-  #puts "searching #{searchString}"
   s = searchString.split(',')
   $searches << Search.new(s[0].to_i,s[1].to_f,s[2].to_f,Date.parse(s[3]),Date.parse(s[4].chomp()))
 end
@@ -167,5 +164,3 @@ $searches.each do |search|
     puts "#{price.search_id},#{index+1},#{price.property_id},#{price.total_price}"
   end
 end
-
-#puts $dates, $properties, $searches
