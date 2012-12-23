@@ -1,11 +1,15 @@
 #!env ruby
 =begin
 
-Questions/Assumptions
----------------------
+Note
+----
+
+  Just trying to solve the challenge, for all submissions after 5:00. Not game the system.
+
+Ambiguities
+-----------
 
   Are the three sections of the csv necessarily in order?
-    Thought it mattered, this should work with multiple sections even interspersed
 
   Which filters more on first run of data, lat/lng or date?
     Assuming lat/lng for now, since its first in the description
@@ -14,23 +18,17 @@ Questions/Assumptions
 Strategy
 --------
 
-  Was planning on using node until I found out its not supported by this interview website.
-  Switching to ruby, where I am rusty, so brute forcing before architecting a nicer solution.
-  Wonder if it would be cheating to write in node anyway and just have ruby hit the api.
-  Or if theres a way to run node in the JVM.
-  Would be fun to test out later
+  InterviewStreet did not list node.js as a possible environment in their FAQ, so ruby it is.
+  Brute force, memory intensive solution first.
+  Did not notice that the challenge FAQ was different than the main FAQ, so missed out on the
+  information about 256Mb 32bit quad core xeon on ubuntu as a testing environment.
+  More about my thought process can be gleaned from github.com/jedahan/airbnb.
+  It's a private repo until permission is granted to open it up.
 
-  Testing on a 13" laptop. Hopfully it will be testing on something comparable in power.
-  Loading everything in memory, using a 50k line test .txt memory usage is bad but works here.
+Goals
+-----
 
-  Ask to be added to private github repo jedahan/airbnb to see my thought process totally break down
-  lots of small commits in the first hour, one, more giant commit later
-
-Goals / Constraints
--------------------
-
-  Only use core libraries
-  Must run on ruby 1.8.7
+  Only use core libraries from ruby 1.8.7
 
 Improvements
 ------------
@@ -51,11 +49,7 @@ Thoughts
   It shows that my variable and function names switch between camelCase and under_scores
   as my brain switches between callback/node.js thinking to synchronous/pythony thinking.
 
-  Great, straightforward question though. I'm sure I have some off-by-one errors with checkout dates
-  And will want to implement it in a few different languages - just large enough to be non-trivial
-  Just small enough to not take up too much time
-
-  WoW totally missed that there were 4 test cases, oh well :(
+  Fun challenge
 =end
 
 require 'date'
