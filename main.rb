@@ -85,6 +85,7 @@ $stdin.each_line do |line|
   end
 end
 
+# Filter local properties
 def local_properties(lat,lng)
   return $properties.select { |property| 
     property.lat.between?(lat-1, lat+1) and
