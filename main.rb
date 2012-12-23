@@ -1,4 +1,63 @@
 #!env ruby
+=begin
+
+Questions/Assumptions
+---------------------
+
+  Are the three sections of the csv necessarily in order?
+    Thought it mattered, this should work with multiple sections even interspersed
+
+  Which filters more on first run of data, lat/lng or date?
+    Assuming lat/lng for now, since its first in the description
+    This kind of optimization is out of scope for given data & time constraint
+
+Strategy
+--------
+
+  Was planning on using node until I found out its not supported by this interview website.
+  Switching to ruby, where I am rusty, so brute forcing before architecting a nicer solution.
+  Wonder if it would be cheating to write in node anyway and just have ruby hit the api.
+  Or if theres a way to run node in the JVM.
+  Would be fun to test out later
+
+  Testing on a 13" laptop. Hopfully it will be testing on something comparable in power.
+  Loading everything in memory, using a 50k line test .txt memory usage is bad but works here.
+
+  Ask to be added to private github repo jedahan/airbnb to see my thought process totally break down
+  lots of small commits in the first hour, one, more giant commit later
+
+Goals / Constraints
+-------------------
+
+  Only use core libraries
+  Must run on ruby 1.8.7
+
+Improvements
+------------
+
+  Factor out pricing algorithm
+  Filter duplicates
+  Apply consistent code style to variable_names, functionNames, and DataStructures
+  Actually build a custom data structure, some options:
+    column oriented - good if code complexity/flexibility is cheap
+    flattened - good if RAM is cheap and code complexity is more expensive
+
+  Change architecture to stream search results instead of batch
+    streaming - good if data access is fast, response time is important
+
+Thoughts
+--------
+  Ruby is so flexible, which is a asset and a drawback.
+  It shows that my variable and function names switch between camelCase and under_scores
+  as my brain switches between callback/node.js thinking to synchronous/pythony thinking.
+
+  Great, straightforward question though. I'm sure I have some off-by-one errors with checkout dates
+  And will want to implement it in a few different languages - just large enough to be non-trivial
+  Just small enough to not take up too much time
+
+  WoW totally missed that there were 4 test cases, oh well :(
+=end
+
 require 'date'
 
 Property = Struct.new(:property_id,:lat,:lng,:price)
@@ -78,7 +137,7 @@ def available_dateinfo(property,checkin,checkout)
   return dateinfo
 end
 
-# this is gonna be O(n^3) or something stupid like that to start.
+# this is gonna be O(n^3) or something stupid like that to start :(
 $searches.each do |search|
   prices = []
   
