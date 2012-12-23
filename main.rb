@@ -15,7 +15,7 @@ $searches = []
 section = nil
 $stdin.each_line do |line|
   # Check if we are in a new section
-  if sections.match(/Properties|Dates|Searches/)
+  if /Properties|Dates|Searches/.match(line)
     section = line.chomp()
   else
     line = line.split(',')
