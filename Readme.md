@@ -4,6 +4,16 @@ Questions
   Are the three sections necessarily in order?
     Version 1 we will assume is in order
 
+  Which filters more on first run of data, lat/lng or date?
+    Assuming lat/lng for now, since its first in the description
+
+Strategy
+--------
+
+  3 hours, was planning on using node until I found out its not supported by this interview website. Switching to ruby, where I am rusty, so going to have to brute force before architecting a nicer solution. Wonder if it would be cheating to write in node anyway and just have ruby hit the api. Or if theres a way to run node in the JVM.
+
+  Testing on a 13" laptop. Hopfully it will be testing on something comparable in power.
+
 Running
 -------
 
