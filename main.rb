@@ -60,29 +60,39 @@ def available_dateinfo(property, checkin, checkout)
   return dateinfo
 end
 
+# Calculate the cost of a stay
+def get_cost(property, checkin, checkout)
+  # get date information if that property is available
+  if dateinfo = available_dateinfo(property, checkin, checkout)
+    # calculate the normal cost
+    total_price = property.price * (checkout-checkin)
+
+    # factor in for special costs
+    dateinfo.each do |date|
+      if date.price
+        total_price += date.price - property.price
+      end
+    end
+  else
+    return nil
+  end
+
+  return total_price
+end
+
 # this is gonna be O(n^3) or something stupid like that to start :(
 $searches.each do |search|
   prices = []
   
-  # for each property in the area properties
+  # for each property in the area
   local_properties(search.lat,search.lng).each do |property|
-    # get date information if that property is available
-    dateinfo = available_dateinfo(property, search.checkin, search.checkout)
-    # if we can book
-    if dateinfo != nil
-      # calculate the normal cost
-      total_price = property.price * (search.checkout-search.checkin)
-
-      # factor in for special costs
-      dateinfo.each do |date|
-        if date.price
-          total_price += date.price - property.price
-        end
-      end
-      prices << Price.new(search.search_id, 0, property.property_id, total_price)
+    # record the cost of a stay, if available
+    if price = get_cost(property, search.checkin, search.checkout)
+      prices << Price.new(search.search_id, 0, property.property_id, price)
     end
   end
 
+  # display prices
   prices = prices.sort_by{ |price| price.total_price }
   prices[0..9].each_with_index do |price, index|
     puts "#{price.search_id},#{index+1},#{price.property_id},#{price.total_price}"
