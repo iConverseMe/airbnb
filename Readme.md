@@ -1,21 +1,35 @@
-Backend Preview
+Questions
+---------
+
+  Are the three sections necessarily in order?
+    Version 1 we will assume is in order
+
+Running
+-------
+
+    ./main.rb
+
+Backend Problem
 ---------------
 
-This is a programming problem that requires both thoughtful design and rapid coding.  It involves data searching, sorting, and optimization.  You will be provided with sample input files (four in total) and your program will need to generate the correct output.  Your final solution must be submitted and run against the test cases on InterviewStreet.  You can use any language you'd like (InterviewStreet supports about a dozen) and you will have 3 hours.  Any code that you re-use from elsewhere should be clearly identified as such. We ask that you write up a thoughtful analysis of the problem, including how your solution could be improved, and how the solution might vary depending on the distribution of the input data.  The best approach is to create a simple working solution to the problem, and combine that with a thoughtful writeup.
-
-Requirements
-------------
-
-  * [node.js](http://nodejs.org/)
-  * [npm](http://npmjs.org)
-
-Installation, running
----------------------
-
-  - `npm install`
-  - `npm start`
-
-Configuration
--------------
-
-  The list of files can be changed my copying `config.json.template` to `config.json` and substituting the "paths" array with your own. Otherwise 
+  You will be provided with availability and pricing data for a set of rental properties.  Your program will determine the cheapest properties for a given date range in a specific geographic area.
+ 
+  You will read input from STDIN and print output to STDOUT.
+ 
+#### Input
+  The input is in CSV format with three sections of data.  "Properties", "Dates", and "Searches".  Each section will begin with a single line labeling the section followed by a number of lines with that section's data.
+ 
+### Output
+ 
+  Your program should output the properties that match each search, up to a maximum of 10 properties per search.  Some searches may return no results.
+ 
+  The results should be ordered by cheapest total price for the stay, also matching the availability dates and geographic filter.  (If two properties have the same total price, sort by property_id ascending).  For the geographic filter, use a bounding box that is 2 degrees square in total (ie, +/- 1.0 degrees from each coordinate).  If a property is unavailable for any date during the range, it is not a valid result.  If a property has a variable price in the specified date range, that variable price overrides the base nightly price for that night.  The total price is the sum of the nightly prices for the entire stay.
+ 
+  Note that properties do not need to be available on the checkout date itself, just on the day before.
+ 
+  Your program should produce output with the following columns.  Each result for a given search should appear on it's own line.  A search with zero results does not need to be included in the output.
+ 
+  - search_id (integer)
+  - rank (integer, starting with 1, max of 10)
+  - property_id (integer)
+  - total_price (integer dollars, total price of stay)
