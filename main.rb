@@ -119,7 +119,7 @@ def available_dateinfo(property,checkin,checkout)
   # First get all the information about a property in a date range
   dateinfo = $dates.select {|date|
     date.property_id == property.property_id and
-    date.date === checkin.upto(checkout) {}
+    date.date === checkin.upto(checkout-1) {}
   }
   
   # Its less painful to miss an available booking than be denied at the door
